@@ -10,3 +10,6 @@ http://blog.csdn.net/dyx404514/article/details/8718249
 划分之后，用线段树维护每条链，修改或者查询(u,v)的时候，先找LCA(u,v)，同时维护每一条链(区间[idx[top[u]], u])。
 每次跳转u-->top[u]。
 对于本题，由于维护的是边权，因此用(u,v)中深度较大的顶点点权来表示边权。
+
+splay
+http://www.cnblogs.com/BLADEVIL/p/3464458.html

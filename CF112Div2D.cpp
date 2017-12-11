@@ -18,6 +18,7 @@ struct node {
     int val;
 };
 node tree[4*N];
+// 找重儿子
 void dfs1 (int u, int p) {
     sz[u] = 1;
     par[u] = p;
@@ -31,6 +32,7 @@ void dfs1 (int u, int p) {
         sz[u] += sz[v];
     }
 }
+// 找重链，标记顶点在线段树中的编号
 void dfs2 (int u, int p, int tp, int d) {
     dep[u] = d;
     idx[u] = ++cnt;
@@ -71,6 +73,7 @@ int query (int root, int l, int r) {
     else if (l > mid) return query(root * 2 + 1, l, r);
     else return query(root * 2, l, mid) + query(root * 2 + 1, mid + 1, r);
 }
+// 找LCA，同时维护每一条链上的权值
 int solve (int u, int v) {
     int res = 0;
     while(true) {

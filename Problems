@@ -13,3 +13,11 @@ http://blog.csdn.net/dyx404514/article/details/8718249
 
 splay
 http://www.cnblogs.com/BLADEVIL/p/3464458.html
+splay是一棵BST。
+经典的是rotate操作。
+rotate(x,y):
+如果son[fa[x,y]]=x,那么相当于把x的父亲旋转为x的编号为y xor 1的儿子，然后把x的编号为y xor 1的儿子变为x原父亲的编号为y的儿子。
+同时x的原爷爷成为它的新父亲。
+splay(x,f)就是通过rotate操作把x的父亲变成f。
+在s之后添加区间[l,r]:splay(s,sroot), splay(s+1,root)，然后把[l,r]插在s+1的左儿子。
+删除[l,r]区间:splay(l-1, sroot), splay(r+1, root),然后把r+1的左儿子删除。

@@ -21,3 +21,6 @@ rotate(x,y):
 splay(x,f)就是通过rotate操作把x的父亲变成f。
 在s之后添加区间[l,r]:splay(s,sroot), splay(s+1,root)，然后把[l,r]插在s+1的左儿子。
 删除[l,r]区间:splay(l-1, sroot), splay(r+1, root),然后把r+1的左儿子删除。
+
+link-cut tree
+http://www.voidcn.com/article/p-msfzeqji-gs.html

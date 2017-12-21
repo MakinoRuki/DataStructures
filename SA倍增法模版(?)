@@ -40,3 +40,15 @@ void construct_sa(string S,int *sa){
         }  
     }  
 }
+
+字符串匹配S和T是O(n*logn)的
+bool contain(string S,int *sa,string T){  
+    int a=0;int b=S.lenth();  
+    while(b-a>1){  
+        int c=(a+b)/2;  
+        //比较S从位置sa[c]开始长度为|T|的字串  
+        if(S.compare(sa[c],T.lenth(),T)<0) a=c;  
+        else b=c;  
+    }  
+    return S.compare(sa[b],T.lenth(),T)==0;  
+} 

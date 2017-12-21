@@ -24,3 +24,7 @@ splay(x,f)就是通过rotate操作把x的父亲变成f。
 
 link-cut tree
 http://www.voidcn.com/article/p-msfzeqji-gs.html
+
+suffix array
+http://www.cnblogs.com/jianglangcaijin/p/6035937.html
+https://icymind.com/difference-cover-modulo-algorithm/

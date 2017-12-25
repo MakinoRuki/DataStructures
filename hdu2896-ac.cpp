@@ -3,21 +3,22 @@
 #include <cstring>
 #include <vector>
 #include <algorithm>
+#include <queue>
 #define N 502
+#define M 1002
+#define chr 130
 using namespace std;
 int n, m;
-vector<string> vs;
-vector<string> ws;
-int ans[N][5];
+int ans[M][5];
 bool vis[N];
 int tot;
 struct node {
     int cnt;
     node* fail;
-    struct node* next[26];
+    struct node* next[chr];
     node() {
         fail = NULL;
-        for (int i = 0; i < 26; ++i) {
+        for (int i = 0; i < chr; ++i) {
             next[i] = NULL;
         }
         cnt = -1;
@@ -40,16 +41,16 @@ void getfail(node* root) {
     while(!q.empty()) {
         node* cur = q.front();
         q.pop();
-        for (int i = 0; i < 26; ++i) {
+        for (int i = 0; i < chr; ++i) {
             if (cur->next[i] != NULL) {
                 node* pre = cur->fail;
                 while(pre != root && pre->next[i] == NULL) {
                     pre = pre->fail;
                 }
-                if (pre->next[i] == NULL) {
-                    cur->next[i]->fail = root;
-                } else {
+                if (pre != root) {
                     cur->next[i]->fail = pre->next[i];
+                } else {
+                    cur->next[i]->fail = root;
                 }
                 q.push(cur->next[i]);
             }
@@ -64,11 +65,9 @@ void query(node* root, string& s, int idx) {
         }
         if (cur->next[s[i] - 'a'] != NULL) {
             cur = cur->next[s[i] - 'a'];
-        } else {
-            cur = root;
         }
         node* pre = cur;
-        do {
+        while(pre != root) {
             if (pre->cnt >= 0) {
                 if (!vis[pre->cnt]) {
                     ++ans[idx][0];
@@ -77,7 +76,7 @@ void query(node* root, string& s, int idx) {
                 }
             }
             pre = pre->fail;
-        } while(pre != root);
+        }
     }
 }
 int main() {
@@ -86,7 +85,6 @@ int main() {
     cin>>n;
     for (int i = 0; i < n; ++i) {
         cin>>s;
-        vs.push_back(s);
         insert(root, s, i);
     }
     getfail(root);
@@ -95,14 +93,13 @@ int main() {
     memset(ans, 0, sizeof(ans));
     for (int i = 0; i < m; ++i) {
         cin>>s;
-        ws.push_back(s);
         memset(vis, false, sizeof(vis));
         query(root, s, i);
-        tot += ans[i][0];
+        tot += (ans[i][0] > 0);
         if (ans[i][0] > 0) {
-            cout<<"web "<<ans[i][0]<<":";
+            cout<<"web "<<i + 1<<":";
             for (int j = 1; j <= ans[i][0]; ++j) {
-                cout<<" "<<ans[i][j];
+                cout<<" "<<ans[i][j] + 1;
             }
             cout<<endl;
         }

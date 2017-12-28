@@ -24,10 +24,20 @@ splay(x,f)就是通过rotate操作把x的父亲变成f。
 
 link-cut tree
 http://www.voidcn.com/article/p-msfzeqji-gs.html
+一些操作堆起来的。用splay维护树链划分出来的链。
+第一层:splay(x)
+第二层:access(x)->splay(x)->合并两棵splay树。合并出一条从root到x的路径。x将不会有更深层的后继。
+第三层:
+link(x,y)->access(x) + fa[x] = y
+cut(x,y)->access(x) + 断开(x,y)
+要注意的是何时执行pushUp和pushDown操作。
 
 suffix array
 http://www.cnblogs.com/jianglangcaijin/p/6035937.html
 https://icymind.com/difference-cover-modulo-algorithm/
+DC3比较靠谱。
+取出suffix(1)和suffix(2)，拆成长度为3的字串(不够的末尾补0)。
+把所有%3不为0的前缀排序之后(可以递归做)，把所有%3为0的前缀排序。
 
 ac automachine
 http://www.cppblog.com/mythit/archive/2009/04/21/80633.html

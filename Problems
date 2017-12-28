@@ -1,4 +1,4 @@
-CF 112 Div2 D - 树链剖分
+❤️ CF 112 Div2 D - 树链剖分
 http://blog.csdn.net/dyx404514/article/details/8718249
 树链剖分：
 定义root的重儿子为儿子中size最大的儿子。
@@ -11,7 +11,7 @@ http://blog.csdn.net/dyx404514/article/details/8718249
 每次跳转u-->top[u]。
 对于本题，由于维护的是边权，因此用(u,v)中深度较大的顶点点权来表示边权。
 
-splay
+❤️ splay
 http://www.cnblogs.com/BLADEVIL/p/3464458.html
 splay是一棵BST。
 经典的是rotate操作。
@@ -22,7 +22,7 @@ splay(x,f)就是通过rotate操作把x的父亲变成f。
 在s之后添加区间[l,r]:splay(s,sroot), splay(s+1,root)，然后把[l,r]插在s+1的左儿子。
 删除[l,r]区间:splay(l-1, sroot), splay(r+1, root),然后把r+1的左儿子删除。
 
-link-cut tree
+❤️ link-cut tree
 http://www.voidcn.com/article/p-msfzeqji-gs.html
 一些操作堆起来的。用splay维护树链划分出来的链。
 第一层:splay(x)
@@ -32,7 +32,7 @@ link(x,y)->access(x) + fa[x] = y
 cut(x,y)->access(x) + 断开(x,y)
 要注意的是何时执行pushUp和pushDown操作。
 
-suffix array
+❤️ suffix array
 http://www.cnblogs.com/jianglangcaijin/p/6035937.html
 https://icymind.com/difference-cover-modulo-algorithm/
 DC3比较靠谱。
@@ -40,7 +40,7 @@ DC3比较靠谱。
 把所有%3不为0的前缀排序之后(可以递归做)，再把所有%3为0的前缀排序。
 然后利用第一步排序的结果合并两个序列。
 
-ac automachine
+❤️ ac automachine
 http://www.cppblog.com/mythit/archive/2009/04/21/80633.html
 Trie+Kmp。
 队列维护每个节点的fail指针。匹配不上就跳转。
@@ -48,5 +48,7 @@ Trie+Kmp。
 1. root->fail=root即可。
 2.匹配上之后遍历路径上所有fail节点，即可找出所有匹配上的位置。
 
-fft
+❤️ 后缀自动机
+
+❤️ fft
 http://blog.csdn.net/lymingha0/article/details/46581277
